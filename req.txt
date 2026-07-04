@@ -1,0 +1,248 @@
+Student Management System (MERN Stack Project)
+Project Overview
+Project Name
+Student Management System
+Technology Stack
+●	MongoDB
+●	Express.js
+●	React.js
+●	Node.js
+Project Objective
+The Student Management System is a simple web application that allows administrators to manage student records digitally. The system helps users add, view, update, and delete student information while learning the fundamentals of full-stack development using the MERN stack.
+________________________________________
+Project Scope
+The application will allow administrators to:
+●	Login to the system
+●	Manage student records
+●	Manage course information
+●	Assign students to courses
+●	View student details
+●	Search students
+●	Generate simple dashboard statistics
+________________________________________
+User Roles
+Admin
+The Admin can:
+●	Login
+●	Add students
+●	Edit students
+●	Delete students
+●	View all students
+●	Manage courses
+●	Search students
+________________________________________
+Module 1: Authentication
+Features
+Login
+●	Email
+●	Password
+Logout
+________________________________________
+Workflow
+1.	Admin enters email and password.
+2.	System validates credentials.
+3.	Admin is redirected to Dashboard.
+4.	Admin can access system modules.
+________________________________________
+Module 2: Dashboard
+Dashboard Cards
+●	Total Students
+●	Total Courses
+●	Active Students
+Example
+Total Students: 120
+Total Courses: 8
+Active Students: 110
+________________________________________
+Module 3: Student Management
+Features
+Add Student
+Fields:
+●	Student ID
+●	Student Name
+●	Email
+●	Phone Number
+●	Gender
+●	Date of Birth
+●	Address
+●	Course
+View Student
+Display complete student information.
+Edit Student
+Update student information.
+Delete Student
+Remove student record.
+Search Student
+Search by:
+●	Name
+●	Student ID
+●	Course
+________________________________________
+Workflow
+1.	Admin clicks "Add Student".
+2.	Fill student information.
+3.	Save student.
+4.	Student record stored in MongoDB.
+5.	Student displayed in list.
+________________________________________
+Module 4: Course Management
+Features
+Add Course
+Fields:
+●	Course Name
+●	Duration
+●	Description
+Edit Course
+Update course information.
+Delete Course
+Remove course.
+View Courses
+Display all courses.
+________________________________________
+Workflow
+1.	Admin creates a course.
+2.	Course stored in database.
+3.	Students can be assigned to course.
+________________________________________
+Module 5: Student-Course Assignment
+Features
+●	Assign course while creating student.
+●	Display assigned course in student profile.
+Example
+Student:
+John Doe
+Course:
+MERN Stack Development
+________________________________________
+Database Collections
+Users Collection
+Field	Type
+name	String
+email	String
+password	String
+________________________________________
+Students Collection
+Field	Type
+studentId	String
+name	String
+email	String
+phone	String
+gender	String
+dob	Date
+address	String
+course	ObjectId
+________________________________________
+Courses Collection
+Field	Type
+courseName	String
+duration	String
+description	String
+________________________________________
+API Endpoints
+Authentication
+POST /api/auth/login
+POST /api/auth/logout
+________________________________________
+Students
+GET /api/students
+GET /api/students/:id
+POST /api/students
+PUT /api/students/:id
+DELETE /api/students/:id
+________________________________________
+Courses
+GET /api/courses
+POST /api/courses
+PUT /api/courses/:id
+DELETE /api/courses/:id
+________________________________________
+Frontend Pages
+Login Page
+Components:
+●	Email Input
+●	Password Input
+●	Login Button
+________________________________________
+Dashboard Page
+Components:
+●	Statistics Cards
+●	Sidebar
+●	Navbar
+________________________________________
+Students Page
+Components:
+●	Student Table
+●	Search Box
+●	Add Student Button
+●	Edit Button
+●	Delete Button
+________________________________________
+Add/Edit Student Form
+Components:
+●	Text Inputs
+●	Dropdown
+●	Submit Button
+________________________________________
+Courses Page
+Components:
+●	Course Table
+●	Add Course Button
+●	Edit Button
+●	Delete Button
+________________________________________
+Learning Concepts Covered
+Frontend (React)
+●	Components
+●	Props
+●	State (useState)
+●	useEffect
+●	Forms
+●	API Calls (Axios)
+●	Routing (React Router)
+●	CRUD Operations
+Backend (Node.js + Express)
+●	Express Server
+●	Routes
+●	Controllers
+●	Middleware
+●	REST APIs
+Database (MongoDB)
+●	Collections
+●	Documents
+●	CRUD Operations
+●	Relationships using ObjectId
+Authentication
+●	JWT Token
+●	Protected Routes
+●	Password Hashing (bcrypt)
+________________________________________
+Project Workflow
+Login
+↓
+Dashboard
+↓
+Manage Courses
+↓
+Add Students
+↓
+Assign Course
+↓
+View Students
+↓
+Edit Students
+↓
+Delete Students
+↓
+Logout
+________________________________________
+Expected Outcome
+After completing this project, students will understand:
+●	Full MERN Stack Architecture
+●	Authentication using JWT
+●	CRUD Operations
+●	React Routing
+●	REST API Development
+●	MongoDB Database Operations
+●	Frontend and Backend Integration
+This project is suitable for beginners and can typically be completed within 1–2 weeks while covering all fundamental MERN Stack concepts.
+
