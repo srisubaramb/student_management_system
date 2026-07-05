@@ -15,7 +15,7 @@ export const protect = async (req,res, next) => {
 		next()
 		return
 	} catch(err) {
-		res.status(500).json({message : "Error in server middleware protect" + err.message})
+		res.status(401).json({message : "Error in server middleware protect JWT " + err.message})
 	}
 }
 export const adminOnly = async (req, res, next) => {
@@ -27,6 +27,6 @@ export const adminOnly = async (req, res, next) => {
 			res.status(403).json({message : 'Access denied '})
 		}
 	} catch(error) {
-		res.status(500).json({message : "Error in server middleware adminonly " + err.message})
+		res.status(500).json({message : "Error in server middleware adminonly " + error.message})
 	}
 }
