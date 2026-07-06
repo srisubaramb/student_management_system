@@ -6,10 +6,12 @@ import { setCredentials } from "../store/authSlice.js"
 import TextInput from "./Form/TextInput.jsx"
 import PrimaryButton from "./PrimaryButton.jsx"
 import FormContainer from "./Form/FormContainer.jsx"
+import { useNavigate } from "react-router-dom"
 
 export default function Login(){
 	const [user, setUser] = useState({ email : '' , password : ''})
 	const authDispatch = useDispatch()
+	const navigate = useNavigate()
 	async function handleFormSubmit(e) {
 		e.preventDefault()
 		if(user.email != '' && user.password != '') {
@@ -18,6 +20,7 @@ export default function Login(){
 				password : user.password
 			})
 			authDispatch(setCredentials(res.data))
+			navigate('/dashboard')
 		}
 	}
 	return (

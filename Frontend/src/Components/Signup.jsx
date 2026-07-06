@@ -3,9 +3,11 @@ import api from "../utils/api.js"
 import FormContainer from "./Form/FormContainer.jsx"
 import TextInput from "./Form/TextInput.jsx"
 import PrimaryButton from "./PrimaryButton.jsx"
+import { useNavigate } from "react-router-dom"
 
 export default function Signup(){
 	const [user, setUser] = useState({name : '' , email : '' , password : '' , confirmPassword : ''})
+	const navigate = useNavigate()
 	async function handleFormSubmit(e) {
 		e.preventDefault()
 		if(user.name != '' &&  user.email != '' && user.password != '' && user.password == user.confirmPassword) {
@@ -14,6 +16,7 @@ export default function Signup(){
 				email : user.email,
 				password : user.password
 			})
+			navigate('/login')
 			console.log(res.data)
 		}
 	}
