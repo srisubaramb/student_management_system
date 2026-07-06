@@ -16,7 +16,7 @@ export default function CourseForm(){
 	} , [])
 	async function fetchCourses(id) {
 		const res = await api.get(`/course/${id}`)
-		setCourse(res.data)
+		setCourse({...initialCourseState, ...res.data})
 	}
 	async function handleFormSubmit(e) {
 		e.preventDefault()

@@ -28,7 +28,7 @@ export default function StudentForm(){
 	async function fetchStudent(id) {
 		try {
 			const res = await api.get(`/student/${id}`)
-			setStudent(res.data)
+			setStudent({...initialStudentState , ...res.data})
 		} catch(error) {
 			console.log(error.response?.data)
 		}

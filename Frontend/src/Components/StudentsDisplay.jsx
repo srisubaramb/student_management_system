@@ -45,7 +45,11 @@ export default function StudentDisplay() {
 				filter={filterStudent}/>
 			{
 				filteredStudents.length > 0 ? (
-					filteredStudents.map(student => <StudentCard student={student} onEditPressed={onEditPressed} onDeletePressed={onDeletePressed}/>)
+					filteredStudents.map(student => <StudentCard 
+						key={student._id}
+						student={student} 
+						onEditPressed={onEditPressed} 
+						onDeletePressed={onDeletePressed}/>)
 				) : (
 					<div className="text-center py-12">
 						<h3 className="text-2xl font-semibold text-gray-500">

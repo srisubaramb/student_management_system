@@ -19,7 +19,7 @@ export default function TextInput({
                 type={type}
                 id={name}
                 name={name}
-                value={value}
+                value={value ?? ""}
                 placeholder={placeholder}
                 onChange={onChange}
             />
