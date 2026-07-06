@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import api from "../utils/api";
-import PrimaryButton from "./PrimaryButton";
 import { searchInArray } from "../utils/utils";
 import Search from "./Search";
+import StudentCard from "./StudentCard";
 
 export default function StudentDisplay() {
 	const [students , setStudents] = useState([])
@@ -44,19 +44,15 @@ export default function StudentDisplay() {
 				options={[{value: 'studentId' , label : 'By Student ID'} , {value : "name" , label: "By Name" } , {value:"course.courseName" , label : "By Course"}]}
 				filter={filterStudent}/>
 			{
-				filteredStudents.length > 0 ? ( filteredStudents.map(student => (
-					<div key={student._id} className="border-2 m-2 p-2">
-						<h2>ID: {student.studentId},  Name: {student.name}</h2>
-						<p>email : {student.email}, phone : {student.phone} </p>
-						<p>Address : {student.address} , dob : {new Date(student.dob).toLocaleDateString()}</p>
-						<p>Course : {student.course.courseName}</p>
-						<div className="flex gap-x-1">
-							<PrimaryButton value={"Edit"} className={'bg-amber-400'} onClick = { () =>  onEditPressed(student._id)}/>
-							<PrimaryButton value={"Delete"} className={"bg-red-400"} onClick={() => onDeletePressed(student._id)}/>
-						</div>
+				filteredStudents.length > 0 ? (
+					filteredStudents.map(student => <StudentCard student={student} onEditPressed={onEditPressed} onDeletePressed={onDeletePressed}/>)
+				) : (
+					<div className="text-center py-12">
+						<h3 className="text-2xl font-semibold text-gray-500">
+							No Students Found
+						</h3>
 					</div>
-
-				))) : (<h3>No Students Found</h3>)
+				)
 			}
 		</>
 	)

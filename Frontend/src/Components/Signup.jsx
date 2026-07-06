@@ -1,5 +1,8 @@
 import { useState } from "react"
 import api from "../utils/api.js"
+import FormContainer from "./Form/FormContainer.jsx"
+import TextInput from "./Form/TextInput.jsx"
+import PrimaryButton from "./PrimaryButton.jsx"
 
 export default function Signup(){
 	const [user, setUser] = useState({name : '' , email : '' , password : '' , confirmPassword : ''})
@@ -15,16 +18,71 @@ export default function Signup(){
 		}
 	}
 	return (
-		<form onSubmit={(e) => handleFormSubmit(e)}>
-			<input type="text" name="name" id="name" placeholder="Name" 
-				onChange={(e) => setUser({...user, name : e.target.value})}/>
-			<input type="email" name="email" id="email"  placeholder="Email"
-				 onChange={(e) => setUser({...user, email: e.target.value})}/>
-			<input type="password" name="password" id="password" placeholder="Password" 
-				onChange={(e) => setUser({...user, password : e.target.value})}/>
-			<input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" 
-				onChange={(e) => setUser({...user, confirmPassword : e.target.value})}/>
-			<input type="submit" value="Sign Up" />
-		</form>
+		<FormContainer
+			title="Sign Up"
+			onSubmit={handleFormSubmit}
+		>
+
+			<TextInput
+				label="Name"
+				name="name"
+				value={user.name}
+				placeholder="Enter your name"
+				onChange={e =>
+					setUser({
+						...user,
+						name: e.target.value
+					})
+				}
+			/>
+
+			<TextInput
+				label="Email"
+				type="email"
+				name="email"
+				value={user.email}
+				placeholder="Enter your email"
+				onChange={e =>
+					setUser({
+						...user,
+						email: e.target.value
+					})
+				}
+			/>
+
+			<TextInput
+				label="Password"
+				type="password"
+				name="password"
+				value={user.password}
+				placeholder="Enter your password"
+				onChange={e =>
+					setUser({
+						...user,
+						password: e.target.value
+					})
+				}
+			/>
+
+			<TextInput
+				label="Confirm Password"
+				type="password"
+				name="confirmPassword"
+				value={user.confirmPassword}
+				placeholder="Confirm your password"
+				onChange={e =>
+					setUser({
+						...user,
+						confirmPassword: e.target.value
+					})
+				}
+			/>
+
+			<PrimaryButton
+				type="submit"
+				value="Sign Up"
+			/>
+
+		</FormContainer>
 	)
 }

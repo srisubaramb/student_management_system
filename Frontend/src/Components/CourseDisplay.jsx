@@ -4,6 +4,7 @@ import api from "../utils/api";
 import PrimaryButton from "./PrimaryButton";
 import Search from "./Search";
 import { searchInArray } from "../utils/utils";
+import CourseCard from "./CourseCard";
 
 export default function CourseDisplay() {
 	const [courses , setCourses] = useState([])
@@ -42,17 +43,8 @@ export default function CourseDisplay() {
 				filter={filterCourse}/>
 			{
 				filteredCourse.length > 0 ? ( filteredCourse.map(course => (
-					<div key={course._id} className="border-2 m-2 p-2">
-						<h2>Course Name : {course.courseName}</h2>
-						<p>Duration : {course.duration} </p>
-						<p>Description : {course.description}</p>
-						<div className="flex gap-x-1">
-							<PrimaryButton value={"Edit"} className={'bg-amber-400'} onClick = {() => onEditPressed(course._id)}/>
-							<PrimaryButton value={"Delete"} className={"bg-red-400"} onClick = {() => onDeletePressed(course._id)}/>
-						</div>
-					</div>
-
-				))) : (<h3>No Course Found</h3>)
+					<CourseCard course={course} onEditPressed={onEditPressed} onDeletePressed={onDeletePressed} /> )
+				)) : (<h3>No Course Found</h3>)
 			}
 		</>
 	)
