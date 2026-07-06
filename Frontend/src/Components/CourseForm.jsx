@@ -19,6 +19,7 @@ export default function CourseForm(){
 			try {
 				const res = id ? await api.put(`course/${id}` , course) : await api.post("/course/", course);
 				console.log(res.data);
+				setCourse({courseName : '' , duration : '' , description : '' })
 			} catch (err) {
 				console.log(err.response?.data);
 			}

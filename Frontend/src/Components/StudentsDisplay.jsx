@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import api from "../utils/api";
 import PrimaryButton from "./PrimaryButton";
+import { searchInArray } from "../utils/utils";
+import Search from "./Search";
 
 export default function StudentDisplay() {
 	const [students , setStudents] = useState([])
+	const [filteredStudents, setFilteredStudents] = useState([])
 	const [refresh, setRefresh] = useState(false)
 	const navigate = useNavigate()
 	useEffect(() => {
@@ -12,19 +15,24 @@ export default function StudentDisplay() {
 			try{
 			const res =  await api.get('/student/')
 			setStudents(res.data)
+			setFilteredStudents(res.data)
 			} catch(error) {
 				console.log(error.response?.data) 
 			}
 		}
 		fetchStudents()
 	} , [refresh])
-	 function onEditPressed(id) {
+	function filterStudent(search) {
+		const filteredStudent = searchInArray(search , students)
+		setFilteredStudents(filteredStudent)
+	}
+	function onEditPressed(id) {
 		navigate(`/student/edit/${id}`)
 	}
 	async function onDeletePressed(id) {
 		try{
 			await api.delete(`/student/${id}`)
-			setRefresh(true)
+			setRefresh(!refresh)
 
 		} catch(error){
 			console.log(error.response?.data)
@@ -32,8 +40,11 @@ export default function StudentDisplay() {
 	}
 	return (
 		<>
+			<Search 
+				options={[{value: 'studentId' , label : 'By Student ID'} , {value : "name" , label: "By Name" } , {value:"course.courseName" , label : "By Course"}]}
+				filter={filterStudent}/>
 			{
-				students.length > 0 ? ( students.map(student => (
+				filteredStudents.length > 0 ? ( filteredStudents.map(student => (
 					<div key={student._id} className="border-2 m-2 p-2">
 						<h2>ID: {student.studentId},  Name: {student.name}</h2>
 						<p>email : {student.email}, phone : {student.phone} </p>
